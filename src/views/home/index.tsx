@@ -8,13 +8,13 @@ export default defineComponent({
     provide(handleDialogSymbol, handleDialogService)
     const { triggerDialog, dialogOk } = handleDialogService
     const slots = {
-      header: () => <div>header</div>,
-      body: () => <div>body</div>,
-      footer: () => (
-        <el-button type="primary" onClick={withModifiers(dialogOk, ['self'])}>
-          确 定
-        </el-button>
-      )
+      header: () => <div>header</div>
+      // body: () => <div>body</div>,
+      // footer: () => (
+      //   <el-button type="primary" onClick={withModifiers(dialogOk, ['self'])}>
+      //     确 定
+      //   </el-button>
+      // )
     }
     // const props = {
     //   props: {

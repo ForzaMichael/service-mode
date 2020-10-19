@@ -1,9 +1,9 @@
-import { PropType, Ref, ref, onMounted } from "vue";
+import { PropType, Ref, ref, onMounted, defineComponent } from 'vue'
 
 export type MyComponentAPI = {
-  hello: (message: string) => void,
-};
-const MyComponent = {
+  hello: (message: string) => void
+}
+const MyComponent = defineComponent({
   props: {
     instanceRef: Object as PropType<Ref<MyComponentAPI | undefined>>
   },
@@ -11,18 +11,19 @@ const MyComponent = {
     if (props.instanceRef !== undefined) {
       // eslint-disable-next-line vue/no-mutating-props
       props.instanceRef.value = {
-        hello(message: string) { ... }
-      };
+        hello: (message: string) => console.log(message)
+      }
     }
   }
-};
-const OtherComponent = {
+})
+
+const OtherComponent = defineComponent({
   setup() {
-    const myComponentRef = ref<MyComponentAPI>();
+    const myComponentRef = ref<MyComponentAPI>()
     onMounted(() => {
       // with type checking!
-      myComponentRef.value!.hello('bonjour');
-    });
-    return () => <MyComponent instanceRef={myComponentRef} />;
+      myComponentRef.value?.hello('sa')
+    })
+    return () => <MyComponent instanceRef={myComponentRef} />
   }
-};
+})
