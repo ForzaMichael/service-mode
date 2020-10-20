@@ -1,8 +1,9 @@
-import { defineComponent, InjectionKey, PropType } from 'vue'
-import FormItemServiceCls from '../service/FormCls/FormItemService'
-import FormServiceCls from '../service/FormCls/FormService'
+import { defineComponent, PropType } from 'vue'
+import FormServiceFunc from '../service/FormFunc/FormService'
+import FormItemServiceFunc from '../service/FormFunc/FormItemService'
+import { InjectionToken } from '../types/service'
 export default defineComponent({
-  name: 'FormItem',
+  name: 'FormItemFunc',
   props: {
     name: {
       type: String,
@@ -12,12 +13,12 @@ export default defineComponent({
       type: String
     },
     formToken: {
-      type: Symbol as PropType<InjectionKey<FormServiceCls>>
+      type: Symbol as PropType<InjectionToken<typeof FormServiceFunc>>
     }
   },
   setup(props) {
-    const formItemService = new FormItemServiceCls(props)
-    return { formItemService, child: null }
+    const formItemService = FormItemServiceFunc(props)
+    return { formItemService }
   },
   render() {
     const children = this.$slots.default?.()

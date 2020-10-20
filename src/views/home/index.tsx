@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { defineComponent, provide, reactive, watch, withModifiers } from 'vue'
+=======
+import { defineComponent, provide, withModifiers } from 'vue'
+>>>>>>> e6e21d45d1adb2db35ee9ebe90619f07000817cb
 import { handleDialogSymbol, useHandleDialog } from '../../service/useDialog'
 import Child from './Child'
 import BaseButton from '../../components/BaseButton'
@@ -7,7 +11,10 @@ export default defineComponent({
     const handleDialogService = useHandleDialog()
     provide(handleDialogSymbol, handleDialogService)
     const { triggerDialog, dialogOk } = handleDialogService
+<<<<<<< HEAD
 
+=======
+>>>>>>> e6e21d45d1adb2db35ee9ebe90619f07000817cb
     const slots = {
       header: () => <div>header</div>
       // body: () => <div>body</div>,
