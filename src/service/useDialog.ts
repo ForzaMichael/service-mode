@@ -6,8 +6,9 @@ export const useHandleDialog = () => {
 
   //弹框触发器
   const triggerDialog = {
-    on: {
-      click: () => (visible.value = true)
+    onClick: () => {
+      visible.value = !visible.value
+      console.log(visible.value)
     }
   }
 
